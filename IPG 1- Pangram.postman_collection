@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "d1552b12-36ec-495f-a370-3e5e42adb200",
+		"name": "IPG- Pangram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pangram : True",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0257f77e-ab62-4c6d-b631-41143f591035",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body('{\"pangram\":\"true\"}');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"string\":\" quick red fox jumped over the lazy brown dog\"\n}\n\n"
+				},
+				"url": {
+					"raw": "https://pangram-api.herokuapp.com/pangram",
+					"protocol": "https",
+					"host": [
+						"pangram-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"pangram"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pangram  : False",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0257f77e-ab62-4c6d-b631-41143f591035",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body('{\"pangram\":\"false\"}');",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"string\":\" A quick red  jumped over the lazy brown dog\"\n}\n\n"
+				},
+				"url": {
+					"raw": "https://pangram-api.herokuapp.com/pangram",
+					"protocol": "https",
+					"host": [
+						"pangram-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"pangram"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pangram : Incorrect Characters In String",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0257f77e-ab62-4c6d-b631-41143f591035",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Error Message :Not Enough Characters In String\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Not Enough Characters In String\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"string\":\"thr jiuo olpiu mjiklsed\"\n}\n\n"
+				},
+				"url": {
+					"raw": "https://pangram-api.herokuapp.com/pangram",
+					"protocol": "https",
+					"host": [
+						"pangram-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"pangram"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pangram : Empty String",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0257f77e-ab62-4c6d-b631-41143f591035",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Error Message :Not Enough Characters In String\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Not Enough Characters In String\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"string\":\"thr jiuo olpiu mjiklsed\"\n}\n\n"
+				},
+				"url": {
+					"raw": "https://pangram-api.herokuapp.com/pangram",
+					"protocol": "https",
+					"host": [
+						"pangram-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"pangram"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
